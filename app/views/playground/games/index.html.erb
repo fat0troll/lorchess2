@@ -1,0 +1,9 @@
+<div id="board" style="width: 400px"></div>
+
+<p>Status: <span id="status"></span></p>
+<p>FEN: <span id="fen"></span></p>
+<p>PGN: <span id="pgn"></span></p>
+
+<% content_for :asset_additions do %>
+  <%= javascript_include_tag 'playground' %>
+<% end %>

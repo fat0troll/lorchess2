@@ -1,0 +1,7 @@
+ru:
+  common:
+    messages:
+      title: 'ЛОР-шахматы 2.0'
+    menu:
+      links:
+        play: 'Сыграть'
