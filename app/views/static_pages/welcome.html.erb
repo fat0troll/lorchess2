@@ -1,1 +1,7 @@
-test
+<% provide(:title, (t 'static.hello.header')) %>
+
+<div class="jumbotron">
+  <h1><%= t 'static.hello.jumbotron.header' %></h1>
+  <p><%= t 'static.hello.jumbotron.message' %></p>
+  <p><%= link_to (t 'static.hello.jumbotron.more'), root_path, :class => 'btn btn-primary btn-lg' %></p>
+</div>
