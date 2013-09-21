@@ -4,6 +4,36 @@ statusEl = $('#status')
 fenEl = $('#fen')
 pgnEl = $('#pgn')
 
+timer = ->
+  status = $('#status')
+  black =
+    minutes: 15
+    seconds: 0
+  white =
+    minutes: 15
+    seconds: 0
+  @current_player = true
+  start = ->
+    if (current_player)
+      @countdown = setInterval(->
+        @minus @white, 1000)
+    else
+      @countdown = setInterval(->
+        @minus @black, 1000)
+  minus = (time) ->
+    if time.seconds is 0
+      time.seconds = 59
+      time.minutes = time.minutes - 1
+    else
+      time.seconds = time.seconds - 1
+  @status = time.minutes + ':' + time.seconds
+  change = ->
+    clearInterval(@countdown)
+    if @current_player is false
+      @current_player = true
+    else
+      @current_player = false
+
 onDragStart = (source, piece, position, orientation) ->
   if (game.game_over() == true ||
     game.turn() == 'w' && piece.search(/^b/) != -1 ||
@@ -28,6 +58,9 @@ onDrop = (source, target) ->
 # for castling, en passant, pawn promotion
 onSnapEnd = ->
   board.position(game.fen())
+  alert 'snapped'
+  timer.change()
+  timer.start()
 
 updateStatus = ->
   status = ''
@@ -56,6 +89,7 @@ updateStatus = ->
   fenEl.html(game.fen())
   pgnEl.html(game.pgn())
 
+
 cfg =
   draggable: true
   position: 'start'
@@ -67,3 +101,4 @@ cfg =
 board = new ChessBoard('board', cfg)
 
 updateStatus()
+timer.start()
