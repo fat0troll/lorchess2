@@ -24,6 +24,9 @@ time_is_up = ->
 class Timer
   constructor : (@panel) ->
     @time = time
+    @update()
+
+  update : =>
     @panel.html(normalize(@time))
 
   start : =>
@@ -32,7 +35,7 @@ class Timer
 
   decrease : =>
     @time = @time - 1
-    @panel.html(normalize(@time))
+    @update()
     if (@time == 0)
       clearInterval(@countdown)
       time_is_up()
@@ -41,6 +44,7 @@ class Timer
   pause : =>
     clearInterval(@countdown)
     @time += fischer
+    @update()
     return
 
 white = new Timer($('#white_clock'))
