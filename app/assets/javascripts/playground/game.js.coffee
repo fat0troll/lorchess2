@@ -1,10 +1,8 @@
 board = undefined
 game = new Chess()
 statusEl = $('#status')
-fenEl = $('#fen')
-pgnEl = $('#pgn')
 
-time = 30
+time = 20*60
 fischer = 5
 
 normalize = (value) ->
@@ -45,8 +43,8 @@ class Timer
     @time += fischer
     return
 
-white = new Timer($('#white'))
-black = new Timer($('#black'))
+white = new Timer($('#white_clock'))
+black = new Timer($('#black_clock'))
 
 onDragStart = (source, piece, position, orientation) ->
   if (game.game_over() == true ||
@@ -107,9 +105,6 @@ updateStatus = ->
       status += ', ' + moveColor + ' is in check'
 
   statusEl.html(status)
-  fenEl.html(game.fen())
-  pgnEl.html(game.pgn())
-
 
 cfg =
   draggable: true

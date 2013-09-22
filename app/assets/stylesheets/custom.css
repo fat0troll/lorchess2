@@ -1,0 +1,13 @@
+#white_clock, #black_clock {
+	text-align: center;
+	font-size: 2em;
+}
+
+#black_clock {
+	color: #fff;
+	background-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(70, 70, 70) 100%);
+}
+
+#status {
+	text-align: center;
+}

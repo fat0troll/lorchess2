@@ -1,10 +1,23 @@
-<div id="board" style="width: 400px"></div>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+		<div id="board" style="width: 100%"></div>
+	</div>
 
-<p>Status: <span id="status"></span></p>
-<p>FEN: <span id="fen"></span></p>
-<p>PGN: <span id="pgn"></span></p>
-
-<p>Time: <span class="label label-default" id="white"></span> <span class="label label-danger" id="black"></span></p>
-<% content_for :asset_additions do %>
-  <%= javascript_include_tag 'playground' %>
-<% end %>
+	<div class="col-sm-3">
+	    <div class="row">
+		    <div class="col-md-6"><div class="well well-sm" id="white_clock"></div></div>
+			<div class="col-md-6"><div class="well well-sm" id="black_clock"></div></div>
+		</div>
+		<div class="row">
+		    <div class="col-xs-12">
+				<div class="panel panel-default">
+				  <div class="panel-body" id="status"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% content_for :asset_additions do %>
+	  <%= javascript_include_tag 'playground' %>
+	<% end %>
+</div>
