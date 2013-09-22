@@ -4,35 +4,37 @@ statusEl = $('#status')
 fenEl = $('#fen')
 pgnEl = $('#pgn')
 
-timer = ->
-  status = $('#status')
-  black =
-    minutes: 15
-    seconds: 0
-  white =
-    minutes: 15
-    seconds: 0
-  @current_player = true
-  start = ->
-    if (current_player)
-      @countdown = setInterval(->
-        @minus @white, 1000)
-    else
-      @countdown = setInterval(->
-        @minus @black, 1000)
-  minus = (time) ->
-    if time.seconds is 0
-      time.seconds = 59
-      time.minutes = time.minutes - 1
-    else
-      time.seconds = time.seconds - 1
-  @status = time.minutes + ':' + time.seconds
-  change = ->
+time = 20*60
+fischer = 5
+
+normalize = (value) ->
+  seconds = value%60
+  minutes = (value - seconds)/60
+  if (value%60 < 10) 
+    seconds = "0" + value%60
+  return "<b>" + minutes + ":" + seconds + "</b>"
+
+class Timer
+  constructor : (@panel) ->
+    @time = time
+    @panel.html(normalize(@time))
+
+  start : =>
+    @countdown = setInterval(@decrease, 1000)    
+    return
+
+  decrease : =>
+    @time = @time - 1
+    @panel.html(normalize(@time))
+    return
+
+  pause : =>
     clearInterval(@countdown)
-    if @current_player is false
-      @current_player = true
-    else
-      @current_player = false
+    @time += fischer
+    return
+
+white = new Timer($('#white'))
+black = new Timer($('#black'))
 
 onDragStart = (source, piece, position, orientation) ->
   if (game.game_over() == true ||
@@ -53,14 +55,21 @@ onDrop = (source, target) ->
     return 'snapback'
 
   updateStatus()
+  changeClock()
 
 # update the board position after the piece snap
 # for castling, en passant, pawn promotion
 onSnapEnd = ->
   board.position(game.fen())
   alert 'snapped'
-  timer.change()
-  timer.start()
+
+changeClock = ->
+  if game.turn() == 'b'
+    white.pause()
+    black.start()
+  else if game.turn() == 'w'
+    black.pause()
+    white.start()
 
 updateStatus = ->
   status = ''
@@ -101,4 +110,4 @@ cfg =
 board = new ChessBoard('board', cfg)
 
 updateStatus()
-timer.start()
+white.start()
