@@ -116,4 +116,3 @@ cfg =
 board = new ChessBoard('board', cfg)
 
 updateStatus()
-white.start()
