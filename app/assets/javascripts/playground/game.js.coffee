@@ -4,7 +4,7 @@ statusEl = $('#status')
 fenEl = $('#fen')
 pgnEl = $('#pgn')
 
-time = 20*60
+time = 30
 fischer = 5
 
 normalize = (value) ->
@@ -14,18 +14,30 @@ normalize = (value) ->
     seconds = "0" + value%60
   return "<b>" + minutes + ":" + seconds + "</b>"
 
+gameover = ->
+  alert('Game over!')
+  board.destroy()
+  new_cfg = 
+    draggable: false
+    position: game.fen()
+    pieceTheme: '/assets/playground/{piece}.png'
+  board = new ChessBoard('board', new_cfg)
+
 class Timer
   constructor : (@panel) ->
     @time = time
     @panel.html(normalize(@time))
 
   start : =>
-    @countdown = setInterval(@decrease, 1000)    
+    @countdown = setInterval(@decrease, 1000)
     return
 
   decrease : =>
     @time = @time - 1
     @panel.html(normalize(@time))
+    if (@time == 0)
+      clearInterval(@countdown)
+      gameover()
     return
 
   pause : =>
