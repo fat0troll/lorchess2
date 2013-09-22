@@ -71,7 +71,6 @@ onDrop = (source, target) ->
 # for castling, en passant, pawn promotion
 onSnapEnd = ->
   board.position(game.fen())
-  alert 'snapped'
 
 changeClock = ->
   if game.turn() == 'b'
