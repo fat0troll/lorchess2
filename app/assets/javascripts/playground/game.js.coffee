@@ -14,8 +14,8 @@ normalize = (value) ->
     seconds = "0" + value%60
   return "<b>" + minutes + ":" + seconds + "</b>"
 
-gameover = ->
-  alert('Game over!')
+time_is_up = ->
+  statusEl.html("Time is up")
   board.destroy()
   new_cfg = 
     draggable: false
@@ -37,7 +37,7 @@ class Timer
     @panel.html(normalize(@time))
     if (@time == 0)
       clearInterval(@countdown)
-      gameover()
+      time_is_up()
     return
 
   pause : =>
