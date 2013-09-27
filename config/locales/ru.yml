@@ -5,6 +5,11 @@ ru:
     menu:
       links:
         play: 'Сыграть'
+        welcome: 'Добро пожаловать, %{username}!'
+        anon_menu: 'Вход/Регистрация'
+        login: 'Войти'
+        register: 'Зарегистрироваться'
+        logout: 'Выйти'
   static:
     hello:
       header: 'Добро пожаловать'

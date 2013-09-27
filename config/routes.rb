@@ -1,5 +1,6 @@
 Lorchess2::Application.routes.draw do
 
+  devise_for :users
   namespace :playground do
     resources :games
   end
