@@ -2,8 +2,8 @@ board = undefined
 game = new Chess()
 statusEl = $('#status')
 
-time = 20*60
-fischer = 5
+time = 15*60
+fischer = 10
 
 normalize = (value) ->
   seconds = value%60
@@ -13,7 +13,7 @@ normalize = (value) ->
   return "<b>" + minutes + ":" + seconds + "</b>"
 
 time_is_up = ->
-  statusEl.html("Time is up")
+  statusEl.html("<%= I18n.t 'interface.playground.game.statuses.time' %>")
   board.destroy()
   new_cfg = 
     draggable: false
@@ -66,12 +66,17 @@ onDrop = (source, target) ->
     return 'snapback'
 
   updateStatus()
+  updateMove(move.san)
   changeClock()
 
 # update the board position after the piece snap
 # for castling, en passant, pawn promotion
 onSnapEnd = ->
   board.position(game.fen())
+
+updateMove = (move) ->
+    console.log(move)
+    console.log(game.fen())
 
 changeClock = ->
   if game.turn() == 'b'
@@ -84,25 +89,25 @@ changeClock = ->
 updateStatus = ->
   status = ''
 
-  moveColor = 'White'
+  moveColor = "<%= I18n.t 'interface.playground.white' %>"
   if game.turn() == 'b'
-    moveColor = 'Black'
+    moveColor = "<%= I18n.t 'interface.playground.black' %>"
 
   # checkmate?
   if game.in_checkmate() == true
-    status = 'Game over, ' + moveColor + ' is in checkmate.'
+    status = moveColor + "<%= I18n.t 'interface.playground.game.statuses.checkmate' %>"
 
   # draw?
   else if game.in_draw() == true
-    status = 'Game over, drawn position'
+    status = "<%= I18n.t 'interface.playground.game.statuses.draw' %>"
 
   # game still on
   else
-    status = moveColor + ' to move'
+    status = moveColor + "<%= I18n.t 'interface.playground.to_move' %>"
 
     # check?
     if game.in_check() == true
-      status += ', ' + moveColor + ' is in check'
+      status += "<%= I18n.t 'interface.playground.game.statuses.check' %>"
 
   statusEl.html(status)
 
