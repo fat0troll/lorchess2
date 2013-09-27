@@ -47,9 +47,6 @@ class Timer
     @update()
     return
 
-white = new Timer($('#white_clock'))
-black = new Timer($('#black_clock'))
-
 onDragStart = (source, piece, position, orientation) ->
   if (game.game_over() == true ||
     game.turn() == 'w' && piece.search(/^b/) != -1 ||
@@ -118,5 +115,8 @@ cfg =
   pieceTheme: '/assets/playground/{piece}.png'
 
 board = new ChessBoard('board', cfg)
+
+white = new Timer($('#white_clock'))
+black = new Timer($('#black_clock'))
 
 updateStatus()
