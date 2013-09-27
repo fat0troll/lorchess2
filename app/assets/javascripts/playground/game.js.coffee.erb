@@ -78,8 +78,8 @@ onSnapEnd = ->
   board.position(game.fen())
 
 updateMove = (move) ->
-    $.post('/api/playground/move',
-      "move": move)
+    console.log(move)
+    console.log(game.fen())
 
 changeClock = ->
   if game.turn() == 'b'
