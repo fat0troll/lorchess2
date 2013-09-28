@@ -18,6 +18,61 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  common:
+    messages:
+      title: 'LORChess 2.0'
+    menu:
+      links:
+        play: 'Play'
+        welcome: 'Welcome, %{username}!'
+        anon_menu: 'Sign in/Sign up'
+        login: 'Sign in'
+        register: 'Sign up'
+        logout: 'Sign out'
+  static:
+    hello:
+      header: 'Welcome'
+      jumbotron:
+        header: 'Шахматный турнир linux.org.ru'
+        message: 'Добро пожаловать на официальный сайт шахматного турнира linux.org.ru! На нашем сайте вы можете просмотреть статистику, обзоры лучших матчей, текущие и прошлые турнирные таблицы и многое другое!'
+        more: 'Where am I?'
+  interface:
+    playground:
+      to_move: " to move"
+      white: 'White'
+      black: 'Black'
+      game:
+        statuses:
+          draw: 'Игра окончена, ничья!'
+          checkmate: ' проиграли. Мат'
+          check: ', check!'
+          time: 'Time is up'
+        new:
+          time: 'Time'
+          fischer: 'Fischer clock'
+          playwhite: 'Play white'
+          playblack: 'Play black'
+    registration:
+      new:
+        signup: 'Регистрация'
+        sign_up: 'Зарегистрироваться'
+      edit:
+        forgot_password: 'Забыли пароль?'
+      password_receive:
+        recovery: 'Восстановление забытого пароля'
+        send_email: 'Выслать письмо с инструкцией по восстановлению пароля'
+      confirmation:
+        didnt_receive: 'Не получили письмо с подтверждением регистрации?'
+      unlock:
+        didnt_receive: 'Не получили инструкций по разблокировке аккаунта?'
+      login:
+        signin: 'Вход'
+        sign_in: 'Войти'
+  activerecord:
+    attributes:
+      user:
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'

@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form role="form" action="/playground/create">
+            <div class="form-group">
+                <label for="time"><%= I18n.t 'interface.playground.game.new.time' %></label>
+                <input type="time" class="form-control" name="time">
+            </div>
+            <div class="form-group">
+                <label for="fischer"><%= I18n.t 'interface.playground.game.new.fischer' %></label>
+                <input type="time" class="form-control" name="fischer" >
+            </div>
+            <div class="checkbox">
+                <input type="radio" name="player" value="white"> <%= I18n.t 'interface.playground.game.new.playwhite' %>
+                <input type="radio" name="player" value="black"> <%= I18n.t 'interface.playground.game.new.playblack' %>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>

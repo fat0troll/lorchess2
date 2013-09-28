@@ -28,6 +28,11 @@ ru:
           checkmate: ' проиграли. Мат.'
           check: ', шах!'
           time: 'Время вышло.'
+        new:
+          time: 'Время'
+          fischer: 'Часы Фишера'
+          playwhite: 'Играть белыми'
+          playblack: 'Играть черными'
     registration:
       new:
         signup: 'Регистрация'
