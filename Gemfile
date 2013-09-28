@@ -49,3 +49,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Users management
 gem 'devise'
+gem 'devise-i18n'
