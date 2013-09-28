@@ -21,3 +21,6 @@
 
 # RubyMine
 .idea
+
+# db config
+config/database.yml

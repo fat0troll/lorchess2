@@ -5,6 +5,11 @@ ru:
     menu:
       links:
         play: 'Сыграть'
+        welcome: 'Добро пожаловать, %{username}!'
+        anon_menu: 'Вход/Регистрация'
+        login: 'Войти'
+        register: 'Зарегистрироваться'
+        logout: 'Выйти'
   static:
     hello:
       header: 'Добро пожаловать'
@@ -23,3 +28,26 @@ ru:
           checkmate: ' проиграли. Мат.'
           check: ', шах!'
           time: 'Время вышло.'
+    registration:
+      new:
+        signup: 'Регистрация'
+        sign_up: 'Зарегистрироваться'
+      edit:
+        forgot_password: 'Забыли пароль?'
+      password_receive:
+        recovery: 'Восстановление забытого пароля'
+        send_email: 'Выслать письмо с инструкцией по восстановлению пароля'
+      confirmation:
+        didnt_receive: 'Не получили письмо с подтверждением регистрации?'
+      unlock:
+        didnt_receive: 'Не получили инструкций по разблокировке аккаунта?'
+      login:
+        signin: 'Вход'
+        sign_in: 'Войти'
+  activerecord:
+    attributes:
+      user:
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'
